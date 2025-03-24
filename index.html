@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <h1>The Library</h1>
+      <button id="add_book">Add a Book</button>
+    </header>
+    <dialog id="modal_book">
+      <form action="#" id="signup">
+        <h3 class="title">Please add a book.</h3>
+
+        <label for="title">TITLE</label>
+        <input type="text" id="title" name="title" required />
+        <label for="author">AUTHOR</label>
+        <input type="text" id="author" name="author" required />
+        <label for="pages">PAGES</label>
+        <input type="text" id="pages" name="pages" required />
+
+        <fieldset>
+          <legend>HAVE YOU READ THIS?</legend>
+          <input type="radio" id="read_yes" name="read" value="yes" checked />
+          <label for="read_yes">Yes</label>
+          <input type="radio" id="read_no" name="read" value="no" />
+          <label for="read_no">No</label>
+        </fieldset>
+        <button type="submit" id="form_button">Submit</button>
+      </form>
+    </dialog>
+    <div class="container">
+      <div class="library"></div>
+      <dialog>something here</dialog>
+    </div>
+    <script src="book.js"></script>
+  </body>
+</html>

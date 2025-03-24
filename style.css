@@ -1,0 +1,136 @@
+@import url(css-reset-josh.css);
+
+header {
+  height: 65px;
+  width: 90vw;
+  margin: 15px auto;
+  text-align: center;
+  position: relative;
+}
+
+.library {
+  width: 90vw;
+  margin: 0 auto;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-row: auto;
+}
+
+.card {
+  border: 2px solid lightgray;
+  border-radius: 10px;
+  height: 250px;
+  position: relative;
+  margin-top: 25px;
+}
+
+h4 {
+  color: blue;
+  margin-top: 15px;
+}
+
+h6 {
+  color: gray;
+}
+p {
+  color: gray;
+  font-size: small;
+}
+
+h4,
+h6,
+p {
+  margin-left: 15px;
+}
+
+.read {
+  position: absolute;
+  bottom: 20%;
+  right: 25px;
+  color: black;
+}
+
+button:not(#form_button) {
+  position: absolute;
+  border-radius: 25px;
+  background-color: transparent;
+  bottom: 9%;
+  left: 15px;
+  font-weight: bold;
+}
+
+#add_book {
+  margin-bottom: 20px;
+}
+
+/* Toggle read */
+
+.toggle {
+  position: relative;
+}
+
+[id^="toggle_checkbox"] {
+  display: none;
+}
+
+.read_label {
+  position: absolute;
+  bottom: 5%;
+  right: 15px;
+  /* left: 0; */
+  display: block;
+  width: 50px;
+  height: 25px;
+  margin: 0 auto;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.read_label:before {
+  top: 3px;
+  left: 3px;
+  width: 20.5px;
+  height: 20.5px;
+
+  border: 2px solid red;
+}
+
+.read_label:after {
+  top: 0;
+  right: 0;
+  width: 50px;
+  height: 27px;
+
+  border: 2px solid red;
+}
+
+.read_label:before,
+.read_label:after {
+  content: "";
+  position: absolute;
+  border-radius: 50px;
+  box-sizing: border-box;
+  transition: 0.5s ease top, 0.5s ease left, 0.5s ease right, 0.5s ease width,
+    0.5s ease height, 0.5s ease border-color, 0.5s ease background-color;
+}
+
+[id^="toggle_checkbox"]:checked + .read_label:before {
+  top: 0;
+  left: 0;
+  width: 50px;
+  height: 27px;
+  background-color: rgb(128, 246, 128);
+  border-color: green;
+}
+
+[id^="toggle_checkbox"]:checked + .read_label:after {
+  top: 3px;
+  right: 3px;
+  width: 20.5px;
+  height: 20.5px;
+  background-color: rgb(128, 246, 128);
+  border-color: green;
+}
+
+/* Style dialog box */
