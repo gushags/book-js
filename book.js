@@ -1,16 +1,17 @@
 const myLibrary = [];
 
-function Book(title, author, pages, read) {
+class Book {
   // the constructor
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+  id() {
+    this.id = crypto.randomUUID();
+  }
 }
-
-Book.prototype.id = function () {
-  this.id = crypto.randomUUID();
-};
 
 function addBookToLibrary(title, author, pages, read) {
   // take params, create a book then store it in the array
