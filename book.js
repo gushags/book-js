@@ -15,7 +15,7 @@ class Book {
 
 function addBookToLibrary(title, author, pages, read) {
   // take params, create a book then store it in the array
-  book = new Book(title, author, pages, read);
+  const book = new Book(title, author, pages, read);
   book.id();
   myLibrary.push(book);
   updateLibrary();
@@ -89,6 +89,8 @@ const title = document.querySelector("#title");
 const author = document.querySelector("#author");
 const pages = document.querySelector("#pages");
 const read = document.querySelectorAll("[name='read']");
+const errorField = document.querySelector("#error");
+
 console.log(read);
 const formButton = document.querySelector("#form_button");
 addBook.addEventListener("click", () => {
@@ -96,22 +98,38 @@ addBook.addEventListener("click", () => {
 });
 formButton.addEventListener("click", (e) => {
   e.preventDefault();
-  const t = title.value;
-  const a = author.value;
-  const p = pages.value;
-  let r = true;
-  // const radio = document.getElementsByName("read");
-  for (let i = 0; i < read.length; i++) {
-    if (read[i].checked) {
-      r = read[i].value === "yes";
+  if (validateForm()) {
+    const t = title.value;
+    const a = author.value;
+    const p = pages.value;
+    let r = true;
+    // const radio = document.getElementsByName("read");
+    for (let i = 0; i < read.length; i++) {
+      if (read[i].checked) {
+        r = read[i].value === "yes";
+      }
     }
+    addBookToLibrary(t, a, p, r);
+    modal.close();
+    title.value = "";
+    author.value = "";
+    pages.value = "";
   }
-  addBookToLibrary(t, a, p, r);
-  modal.close();
-  title.value = "";
-  author.value = "";
-  pages.value = "";
 });
+
+function validateForm() {
+  if (!title.checkValidity()) {
+    errorField.textContent = "Please enter a title.";
+    return false;
+  } else if (!author.checkValidity()) {
+    errorField.textContent = "Please enter an author.";
+    return false;
+  } else if (!pages.checkValidity()) {
+    errorField.textContent = "Please enter the number of pages.";
+    return false;
+  }
+  return true;
+}
 
 // delete button
 function deleteBook(id) {
